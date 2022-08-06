@@ -11,8 +11,10 @@ all_guns:
 cycle_guns:
   - "2"
   - "4"
-  - "5"
+  - "2"
   - "6"
+  - "2"
+  - "5"
 switch_when:
   "2" : "right left"
   "5" : "left"

@@ -9,11 +9,14 @@ all_guns:
   - "7"
   - "8" #BFG9000
 cycle_guns:
-  - "2"
   - "4"
-  - "5"
+  - "2"
   - "6"
+  - "2"
+  - "5"
+  - "2"
 switch_when:
+  "2" : "right left"
   "4" : "left"
   "5" : "left"
   "6" : "left"
