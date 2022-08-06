@@ -1,0 +1,22 @@
+starter_key: "4"
+all_guns:
+  - "1" #CombatShotgun
+  - "2"
+  - "3"
+  - "4"
+  - "5"
+  - "6"
+  - "7"
+  - "8" #BFG9000
+cycle_guns:
+  - "4"
+  - "2"
+  - "5"
+  - "2"
+  - "6"
+  - "2"
+switch_when:
+  "2" : "auto right left"
+  "4" : "left"
+  "5" : "left"
+  "6" : "left"
