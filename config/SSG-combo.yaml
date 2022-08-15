@@ -1,4 +1,5 @@
-starter_key: "5"
+starter_key: "scroll-down"
+combo_name : "Super Shotgun"
 all_guns:
   - "1" #CombatShotgun
   - "2"
@@ -12,7 +13,13 @@ cycle_guns:
   - "5"
   - "2"
   - "6"
-  - "2"
+  - "4"
+
+next_weapon_when:
+  "2" : "left_release"
+  "5" : "left_release"
+  "6" : "left_release"
+  "4" : "left_release" #Detonator
 switch_when:
   "2" : "right left"
   "5" : "left"
