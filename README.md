@@ -3,7 +3,7 @@ QuickSwitch, gadget manipulation,wider flame belch,plasma lock,... So many techn
 
 However too many techniques can cause you to lose track on the surrounding enemies.
 
-In this macro will make well-known tech becomes more passive.
+This macro will make known tech becomes more passive.
 
 
 
