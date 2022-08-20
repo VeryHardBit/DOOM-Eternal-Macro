@@ -1,28 +1,17 @@
-starter_key: "4"
-combo_name : "Rocker Launcher"
-all_guns:
-  - "1" #CombatShotgun
-  - "2"
-  - "3"
-  - "4"
-  - "5"
-  - "6"
-  - "7"
-  - "8" #BFG9000
+starter_key: "scroll-up"
+name : "Ballista"
+spam_delay : 0.5
+macro_type: "combo"
 cycle_guns:
-  - "4"
   - "2"
   - "6"
-  - "2"
-  - "5"
-  - "2"
 next_weapon_when:
+
   "2" : "left_release"
   "4" : "left_release"
   "5" : "left_release"
   "6" : "left_release"
 switch_when:
   "2" : "right left"
-  "4" : "left"
   "5" : "left"
   "6" : "left"

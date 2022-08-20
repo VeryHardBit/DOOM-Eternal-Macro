@@ -1,19 +1,7 @@
-starter_key: "middle-up"
-combo_name : "Microwave Beam"
-all_guns:
-  - "1" #CombatShotgun
-  - "2"
-  - "3"
-  - "4"
-  - "5"
-  - "6"
-  - "7"
-  - "8" #BFG9000
+starter_key: "3"
+name : "Microwave Beam"
 cycle_guns:
   - "3"
-  - "4"
-  - "3"
-  - "5"
 next_weapon_when:
   "2" : "left_release" #can be "scroll_up"
   "3" : "left_release"

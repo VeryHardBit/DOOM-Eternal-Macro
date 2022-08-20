@@ -1,0 +1,9 @@
+starter_key: "R"
+name : "Flamethrower"
+enable : false
+macro_type: "gadget"
+spam_delay : 0.5
+auto_action:
+  - ["rotate",-20]
+  - ["rotate",40]
+  - ["rotate",-20]

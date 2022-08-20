@@ -1,5 +1,7 @@
-starter_key: "scroll-up"
-combo_name : "Precision Bolt"
+starter_key: "middle-up"
+name : "Rocker Launcher"
+spam_delay : 0.5
+macro_type : "combo"
 all_guns:
   - "1" #CombatShotgun
   - "2"
@@ -10,15 +12,8 @@ all_guns:
   - "7"
   - "8" #BFG9000
 cycle_guns:
-  #- "2"
-  #- "1"
-  - "2"
-  - "6"
-  #- "Grenade" #Grenade will be auto shoot
-  - "2"
   - "4"
   - "2"
-  - "5"
 next_weapon_when:
   "2" : "left_release"
   "4" : "left_release"
@@ -26,5 +21,6 @@ next_weapon_when:
   "6" : "left_release"
 switch_when:
   "2" : "right left"
+  "4" : "left"
   "5" : "left"
   "6" : "left"
