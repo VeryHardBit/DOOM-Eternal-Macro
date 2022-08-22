@@ -4,8 +4,11 @@ spam_delay : 0.5
 macro_type: "combo"
 
 cycle_guns:
+  #- "5"
+  #- "2"
   - "5"
-  - "2"
+  - "4"
+  - "6"
 
 next_weapon_when:
   "2" : "left_release"

@@ -13,3 +13,7 @@ try using multiple gadgets:
 
     ballista:
         there are some knockback. can be used for shooting and retreating
+headshot deals extra damage
+
+
+

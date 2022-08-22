@@ -1,0 +1,7 @@
+Access plasma rifle with 3
+Access microwave beam with 3 & scroll-up
+Access 
+
+
+Write README.md :
+    required keybinding

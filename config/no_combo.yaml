@@ -1,9 +1,7 @@
-starter_key: "3-double" #press 3,2 times
-name : "Microwave Beam"
-macro_type: "combo"
-cycle_guns:
-  - "3"
-  - "4"
+starter_key: "q | 1 | 7"
+name : "no combo"
+macro_type : "combo"
+cycle_guns: []
 next_weapon_when:
   "2" : "left_release" #can be "scroll_up"
   "3" : "left_release"
