@@ -3,6 +3,7 @@ start_when :
     mouse : "middle_release"
 macro_type : "combo"
 name : "Lock-on Burst"
+combo_cooldown : 0.1
 
 -----
 #python part

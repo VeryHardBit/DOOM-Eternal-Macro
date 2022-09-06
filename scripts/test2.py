@@ -1,19 +1,30 @@
 from Instructions import *
 
-seq=Sequence(
-    Switch("Super Shotgun"),
-    Wait("left_release"),
-    Switch("Ballista"),
-    Wait("left_release"),
-    Sequence(
-        Switch("Super Shotgun"),
-        Sequence(
-            Wait("left_release"),
-        )
+Sequence(
+    Switch("Lock-on Burst"),
+    Wait(
+        "right_down",
+            Wait("right_release",Sequence(
+                Delay(1/30),
+                Switch("Super Shotgun"),
+                Wait("left_release")
+            )),
+        "left_down",
+            Wait("left_release",Sequence(
+                Switch("Precision Bolt"),
+                Wait("left_release")
+            ))
     )
 )
 seq.print()
-#seq.perform()
-#seq.receive_event("left_release")
-#seq.perform()
-#seq.receive_event("left_release")
+while seq.perform():
+    pass
+seq.receive_event("right_down")
+while seq.perform():
+    pass
+seq.receive_event("right_release")
+while seq.perform():
+    pass
+seq.receive_event("left_release")
+
+seq.print()
