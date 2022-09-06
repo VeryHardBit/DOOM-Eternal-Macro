@@ -1,0 +1,13 @@
+start_when:
+  mouse : "scroll_down"
+name : "Super Shotgun & Ballista"
+spam_delay : 0.5
+macro_type: "combo"
+
+cycle_guns:
+  - "Super Shotgun"
+  - "Ballista"
+
+next_weapon_when:
+  "Super Shotgun" : "left_release"
+  "Ballista" : "left_release"

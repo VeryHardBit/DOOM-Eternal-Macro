@@ -1,6 +1,12 @@
 Access plasma rifle with 3
 Access microwave beam with 3 & scroll-up
-Access 
+
+
+
+
+
+Detect current weapon :
+    is_current_weapon(...) ; ... is mod name or weapon name
 
 
 Write README.md :

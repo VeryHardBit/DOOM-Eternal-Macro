@@ -1,0 +1,14 @@
+start_when: "q | 1 | 7"
+enabled: false
+name : "no combo"
+macro_type : "combo"
+cycle_guns: []
+next_weapon_when:
+  "2" : "left_release" #can be "scroll_up"
+  "3" : "left_release"
+  "4" : "left_release"
+  "5" : "left_release"
+switch_when:
+  "2" : "right left"
+  "5" : "left"
+  "6" : "left"

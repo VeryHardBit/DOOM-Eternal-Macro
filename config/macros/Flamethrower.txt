@@ -1,0 +1,8 @@
+Sequence(
+    Wait(
+        "ctrl_down",Sequence(
+            Do_Later(2/120,Press("g")),
+            Do_Later(4/120,Release("g")),
+        )
+    )
+)

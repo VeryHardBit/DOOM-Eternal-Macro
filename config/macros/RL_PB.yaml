@@ -1,0 +1,28 @@
+start_when:
+  mouse : "middle_release"
+  #keyboard : "4"
+name : "Rocker Launcher"
+spam_delay : 0.5
+macro_type : "combo"
+cycle_guns1: #left click only from lock-on burst cause this combo
+  - "Lock-On Burst"
+  - "Precision Bolt"
+cycle_guns2: #hold "right" cause this combo and release "right" to switch to next weapon
+  - "Lock-On Burst"
+  - "Super Shotgun"
+next_weapon_when:
+  "Rocket Launcher" : "left_release"
+  "Detonator" : "left_release"
+  ""
+  "Precision Bolt" : "left_release"
+
+event : #This trigger when ....
+  "cycle_guns2" :
+    current_weapon : "Lock-On Burst"
+    mouse : ["right_hold","right_down"]
+  "cycle_guns1" : 
+    current_weapon : "Lock-On Burst"
+    mouse : "left_release"
+  "next_weapon" :
+    current_weapon : ["Super Shotgun","Precision Bolt"]
+    mouse : "left_release"

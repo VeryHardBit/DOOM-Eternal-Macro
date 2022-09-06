@@ -1,9 +1,9 @@
 # DOOM-Eternal-Macro
-QuickSwitch, gadget manipulation,wider flame belch,plasma lock,... So many techniques in DOOM Eternal.
+The macro that helps you with Quick-Switching,Gadget manipulation, etc., in DOOM Eternal.
 
-However too many techniques can cause you to lose track on the surrounding enemies.
+## Required in-game settings
 
-This macro will make known tech becomes more passive.
+
 
 
 
@@ -11,7 +11,7 @@ This macro will make known tech becomes more passive.
 ## Features
 - Auto quick-switch
 
-- choose combo for quick-switch with (scroll-up,scroll-down,middle-click)
+- choose combo for quick-switch with (scroll-up,scroll-down,middle-click,side mouse btn1,side mouse btn2)
 
 - Wider flame thrower(spin 360 degress)
     

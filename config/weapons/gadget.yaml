@@ -1,0 +1,8 @@
+"grenade":
+  use_key : "ctrl"
+  mods: ["ice grenade","frag grenade"]
+  mods_key: "G"
+"chainsaw":
+  use_key: "c"
+"flame belch":
+  use_key : "r"

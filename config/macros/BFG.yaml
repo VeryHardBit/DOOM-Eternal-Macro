@@ -1,0 +1,11 @@
+start_when:
+  current_weapon : "BFG-9000"
+name : "BFG-9000"
+spam_delay : 0.5
+macro_type: "combo"
+cycle_guns:
+  - "Precision Bolt"
+  - "Ballista"
+next_weapon_when:
+  "Precision Bolt"  : "left_release"
+  "Ballista"        : "left_release"

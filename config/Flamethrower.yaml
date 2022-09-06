@@ -1,9 +1,0 @@
-starter_key: "r"
-name : "Flamethrower"
-enable : false #It's impossible to use mouse.move on doom eternal
-macro_type: "gadget"
-spam_delay : 0.5
-auto_action:
-  - ["rotate",-10]
-  - ["rotate",20]
-  - ["rotate",-10]

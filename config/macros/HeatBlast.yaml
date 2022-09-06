@@ -1,0 +1,8 @@
+start_when:
+  current_weapon : "Heat Blast"
+name : "Heat Blast"
+macro_type : "standalone_weapon"
+cycle_guns:
+  - "Heat Blast"
+next_weapon_when:
+  "Heat Blast" : "left_release" #can be "scroll_up"

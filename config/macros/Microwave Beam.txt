@@ -1,0 +1,16 @@
+#yaml part 
+
+start_when:
+  current_weapon : "Microwave Beam"
+name : "Microwave Beam & Rocket Launcher"
+macro_type: "combo"
+
+---
+#python part
+Sequence(
+    Switch("Microwave Beam"),
+    Wait("right_down"),
+    Wait("left_release"),
+    Switch("Rocket Launcher"),
+    Wait("left_release")
+)

@@ -1,0 +1,24 @@
+#yaml part
+start_when :
+    mouse : "middle_release"
+macro_type : "combo"
+name : "Lock-on Burst"
+
+-----
+#python part
+Sequence(
+    Switch("Lock-on Burst"),
+    Wait(
+        "right_down",
+            Wait("right_release",Sequence(
+                Delay(1/30),
+                Switch("Super Shotgun"),
+                Wait("left_release")
+            )),
+        "left_down",
+            Wait("left_release",Sequence(
+                Switch("Precision Bolt"),
+                Wait("left_release")
+            ))
+    )
+)

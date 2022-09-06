@@ -1,0 +1,8 @@
+start_when:
+  keyboard : "ctrl_down"
+name : "grenade"
+enable : true #It's impossible to use mouse.move on doom eternal for now
+macro_type: "gadget"
+spam_delay : 0.5
+auto_action:
+  - ["press","G"]

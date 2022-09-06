@@ -1,0 +1,11 @@
+start_when:
+  current_weapon : "Crucible"
+  keyboard : "v_down"
+  #keyboard : "4"
+name : "Crucible"
+spam_delay : 0.5
+macro_type : "combo"
+cycle_guns:
+  - "Crucible"
+next_weapon_when:
+  "Crucible" : "none"

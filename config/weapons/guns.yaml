@@ -1,0 +1,29 @@
+#mods_key = access
+"Combat Shotgun":
+  access : "1_down"
+  mods : ["Sticky Bomb","Full Auto"]
+  cursor_imgs : ["cursor/Sticky Bomb.tif","cursor/Full Auto.tif"]
+"Heavy Cannon":
+  access : "2_down"
+  mods : ["Precision Bolt","Micro Missiles"]
+"Plasma Rifle":
+  access : "3_down"
+  mods : ["Heat Blast","Microwave Beam"]
+"Rocket Launcher":
+  access : "4_down"
+  mods : ["Detonator","Lock-on Burst"]
+"Super Shotgun":
+  access : "5_down"
+  mods : null
+"Ballista":
+  access : "6_down"
+  mods : ["Arbalest","Destroyer Blade"]
+"Chaingun":
+  access : "7_down"
+  mods : ["Mobile Turret","Energy Shield"]
+#BFG is the odd one here
+
+
+"Crucible":
+  access : "v_down"
+
