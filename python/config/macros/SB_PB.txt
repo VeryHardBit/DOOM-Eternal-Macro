@@ -1,0 +1,14 @@
+#yaml part
+start_when :
+    event : "user_mouse_x_down"
+macro_type : "combo"
+name : "Sticky Bomb & Precision Bolt"
+
+-----
+#python part
+Sequence(
+    Switch("Sticky Bomb"),
+    Wait("user_mouse_left_release"),
+    Switch("Precision Bolt"),
+    Wait("user_mouse_left_release"),
+)

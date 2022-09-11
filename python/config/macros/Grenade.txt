@@ -1,0 +1,16 @@
+#yaml part
+start_when :
+    event : "user_keyboard_ctrl_down"
+name : "Grenade w/Swap"
+enabled : false
+spam_delay : 0.5
+macro_type: "gadget"
+
+-----
+#python part
+Sequence(
+    Wait("user_keyboard_ctrl_release"),
+    Press("g"),
+    Wait(0.1),
+    Release("g"),
+)

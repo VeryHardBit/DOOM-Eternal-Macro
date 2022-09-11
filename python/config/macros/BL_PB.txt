@@ -1,0 +1,30 @@
+#yaml part
+start_when :
+    event : "user_mouse_scroll_up"
+name : "Ballista & Precision Bolt"
+spam_delay : 0.5
+macro_type: "combo"
+-----
+#python part
+Sequence(
+    Switch("Ballista"),
+    Wait("user_mouse_left_release"),
+    Switch("Precision Bolt"),
+    Wait("user_mouse_right_down"),
+    Wait("user_mouse_left_release"),
+
+
+
+
+
+    #Switch("Ballista"),
+    #Delay(10/120),
+    #Wait("user_mouse_left_release"),
+    #Switch("Precision Bolt"),
+    #Delay(1/120),
+    #Wait("user_mouse_left_release"),
+    ##Wait("right_down",Wait(
+    #    "right_release",BackToStart(),
+    #    "left_release",Pass(),
+    #)),
+)

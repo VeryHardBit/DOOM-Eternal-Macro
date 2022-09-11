@@ -1,11 +1,12 @@
 #yaml part 
 
 start_when:
-  current_weapon : "Microwave Beam"
+    #user_switch_to : "Microwave Beam"
+    event : "user_keyboard_3_down"
 name : "Microwave Beam & Rocket Launcher"
 macro_type: "combo"
 
----
+-----
 #python part
 Sequence(
     Switch("Microwave Beam"),

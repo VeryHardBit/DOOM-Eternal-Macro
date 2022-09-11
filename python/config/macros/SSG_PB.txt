@@ -1,0 +1,18 @@
+#yaml part
+
+start_when:
+    event : "user_mouse_scroll_down"
+name : "Super Shotgun & Precision Bolt"
+spam_delay : 0.5
+macro_type: "combo"
+-----
+#python part
+Sequence(
+    Switch("Super Shotgun"),
+    Wait("user_mouse_left_release"),
+    #Delay(0.5-0.1),
+    Switch("Precision Bolt"),
+    Wait("user_mouse_right_down"),
+    Wait("user_mouse_left_release"),
+    
+)
