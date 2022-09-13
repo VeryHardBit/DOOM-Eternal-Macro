@@ -49,13 +49,19 @@ class Sequence(Instruction):
     def is_waiting_event(self):
         return self.instructions[self.instruction_index].is_waiting_event()
     def current_instruction(self):
-        return self.instructions[self.instruction_index]
+        try:
+            if self.instruction_index<0:
+                return None
+            return self.instructions[self.instruction_index]
+        except IndexError:
+            return None
     def perform(self):
         if self.perform_block==False:
             self.perform_block=True
             if hasattr(self.current_instruction(), "perform"):
                 while True:
-                    
+                    if self.current_instruction()==None:
+                        break
                     if isinstance(self.current_instruction(),Delay):
                         #print("Delay")
                         ready_to_next=self.current_instruction().perform()
@@ -67,11 +73,16 @@ class Sequence(Instruction):
                             continue
                         else:
                             time.sleep(1/120)
+                    if isinstance(self.current_instruction(), BackToStart):
+                        self.instruction_index=0
+                        continue
                     else:
                         ready_to_next=self.current_instruction().perform()
                         if ready_to_next:
                             if self.current_instruction().is_last_instruction():
-                                self.instruction_index=0
+                                #self.instruction_index=0
+                                print("Meah")
+                                self.instruction_index=-1
                             else:
                                 self.instruction_index+=1
                         else:
@@ -177,17 +188,38 @@ class Release_Mod(Instruction):
     def perform(self):
         kb.release("k")
         return True
+class Tap(Instruction):
+    def __init__(self,key):
+        super().__init__()
+        self.key=key
+    def perform(self):
+        kb.press(self.key)
+        kb.call_later(lambda k:kb.release(k), args=(self.key,),delay=1/60)
+        print("g pressed")
+        return True
         
 
 class Press(Instruction):
-    pass
-
+    def __init__(self,key):
+        super().__init__()
+        self.key=key
+    def perform(self):
+        kb.press(self.key)
+        return True
 class Release(Instruction):
-    pass
+    def __init__(self,key):
+        super().__init__()
+        self.key=key
+    def perform(self):
+        kb.release(self.key)
+        return True
 
 
 
 class BackToStart(Instruction):
-    pass
+    def __init__(self):
+        super().__init__()
 class Pass(Instruction):
+    def __init__(self):
+        super().__init__()
     pass

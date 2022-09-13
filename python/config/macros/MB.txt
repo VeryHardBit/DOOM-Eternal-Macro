@@ -1,17 +1,16 @@
-#yaml part 
-
-start_when:
-    #user_switch_to : "Microwave Beam"
-    event : "user_keyboard_3_down"
+#yaml part
+start_when :
+    event : "user_mouse_x_down"
+macro_type : "combo"
 name : "Microwave Beam & Rocket Launcher"
-macro_type: "combo"
 
 -----
 #python part
 Sequence(
     Switch("Microwave Beam"),
-    Wait("right_down"),
-    Wait("left_release"),
+    Wait("user_mouse_right_down"),
+    Wait("user_mouse_left_release"),
     Switch("Rocket Launcher"),
-    Wait("left_release")
+    Wait("user_mouse_left_release"),
+    BackToStart()
 )

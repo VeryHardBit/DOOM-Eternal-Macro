@@ -11,4 +11,5 @@ Sequence(
     Wait("user_mouse_left_release"),
     Switch("Super Shotgun"),
     Wait("user_mouse_left_release"),
+    BackToStart()
 )
