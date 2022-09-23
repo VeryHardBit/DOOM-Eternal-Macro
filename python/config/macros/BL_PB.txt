@@ -13,19 +13,4 @@ Sequence(
     Wait("user_mouse_right_down"),
     Wait("user_mouse_left_release"),
     BackToStart()
-
-
-
-
-
-    #Switch("Ballista"),
-    #Delay(10/120),
-    #Wait("user_mouse_left_release"),
-    #Switch("Precision Bolt"),
-    #Delay(1/120),
-    #Wait("user_mouse_left_release"),
-    ##Wait("right_down",Wait(
-    #    "right_release",BackToStart(),
-    #    "left_release",Pass(),
-    #)),
 )

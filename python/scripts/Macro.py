@@ -5,6 +5,7 @@ class Macro:
     def __init__(self,yaml_part,python_part):
         yaml_part=yaml.safe_load(yaml_part)
         yaml_part.setdefault("enabled",True)
+        yaml_part.setdefault("cooldown",0.0)
         self.enabled=yaml_part["enabled"]
         if not self.is_enabled():
             return None
@@ -18,6 +19,7 @@ class Macro:
         self.action=eval(python_part)
         self.type=yaml_part["macro_type"]
         self.name=yaml_part["name"]
+        self.cooldown=yaml_part["cooldown"]
 
     def is_enabled(self):
         return self.enabled

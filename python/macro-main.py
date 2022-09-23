@@ -3,77 +3,87 @@ import os
 from glob import glob
 import yaml
 import keyboard as kb
+import mouse
+import time
+from win32gui import GetWindowText, GetForegroundWindow
+from pathlib import Path
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-from scripts.Instructions import *
-import scripts.event_hooker
+main_dir=os.path.dirname(os.path.abspath(__file__))
+config_dir=main_dir+"/config"
+HOME=Path.home()
+data={}
+data['main_dir']=main_dir
+with open(f'{HOME}/.DOOM-Eternal-Macro','w') as f:
+    f.write(yaml.dump(data))
 
-weapons=yaml.safe_load(open("config/weapons/guns.yaml"))
-#macro sorting order:
-#   start_when with current_weapon
-#   start_when with mouse
-#   start_when with keyboard
-macros=[]#sorting order
-for f in glob("config/macros/*.yaml"):
-    macro=yaml.safe_load(open(f))
-    macro.setdefault('enabled',True)
-    if macro['enabled']:
-        macro.setdefault('start_when',{'weapon':'','mouse':'','keyboard':''})
-        macro["start_when"].setdefault('weapon','')
-        macro["start_when"].setdefault('mouse','')
-        macro["start_when"].setdefault('keyboard','')
+
+os.chdir(main_dir)
+sys.path.append(f'{main_dir}/scripts')
+#sys.path.append(f'{macro_dir}/config')
+
+
+
+DEBUG=False
+import scripts.event_hooker as event_hooker
+from scripts.Macro import Macro
+
+macros=[]
+for f in glob("config/macros/*.txt"):
+    f=open(f).read().split("-----")
+    macro=Macro(f[0],f[1])
+    if macro.is_enabled():
         macros.append(macro)
-    #macros.append(yaml.safe_load(open(f)))
-combo=None
-combo_index=0
-
-def get_access(name):#name can be mod-name or weapon-name
-    global weapons
-    if name in weapons:
-        return weapons[name]["access"]
-    for k,v in weapons.items():
-        if name in v["mods"]:
-            return v["access"]
-    return None
-def check_mod():#use image recognition to get mod name
-    pass 
-
+        #print(macro.action)
+holding_macro0=None
+holding_macro=None
+holding_macro_time=None
+holding_macro_cooldown=0
+_temp=False
 def trigger_event(event):
-    global macros
-    global combo
-    global weapon
-    global combo_index
-    event=event.lower()
-    #print(event)
-    #check for macro 
-    for macro in macros:
-        if event==macro['start_when']["keyboard"] or event==macro['start_when']["mouse"] or event=='mod_down':
-            if macro['macro_type']=="combo":
-                combo=macro
-                combo_index=0
-                weapon=combo['cycle_guns'][combo_index]
-                k=get_access(weapon).split('_')[0]
-                kb.press(k)
-                kb.call_later(lambda x:kb.release(x),args=(k),delay=1/120)
-                print(combo)
-                break
-            if macro['macro_type']=="standalone_weapon":
-                combo=None
-                break
-    #check for combo
-    if combo is not None:
-        if weapon in combo['next_weapon_when']:
-            if event==combo['next_weapon_when'][weapon]:
-                combo_index=(combo_index+1)%len(combo['cycle_guns'])
-                weapon=combo['cycle_guns'][combo_index]
-                k=get_access(weapon).split('_')[0]
-                kb.press(k)
-                kb.call_later(lambda x:kb.release(x),args=(k),delay=1/120)
-                #print(weapon)
-        pass
-
+    global holding_macro
+    global DEBUG
+    global _temp
+    global holding_macro0
+    global holding_macro_time
+    global holding_macro_cooldown
+    if event=="user_mouse_m_down":
+        sys.exit()
+    
+    if _temp==False:
+        print("This should appear")
+        _temp=True
+    if GetWindowText(GetForegroundWindow())=="DOOMEternal":
+        #There is macro combo,single weapon,macro perform once
+        if event=="user_keyboard_q_down" or event=="user_keyboard_q_release":
+            holding_macro=None
+        for macro in macros:
+            if "event" in macro.start_when and macro.start_when["event"]==event:
+                #print(macro)
+                macro.DEBUG=DEBUG
+                if macro.type=="combo":
+                    if holding_macro is not None:
+                        if time.time()-holding_macro_time>=holding_macro_cooldown:
+                            holding_macro.action.reset()
+                            holding_macro0=holding_macro
+                            holding_macro=macro
+                            holding_macro_time=time.time()
+                            holding_macro_cooldown=holding_macro.cooldown
+                    else:
+                        holding_macro0=holding_macro
+                        holding_macro=macro
+                        holding_macro_time=time.time()
+                        holding_macro_cooldown=holding_macro.cooldown
+                    #print(macro)
+                if macro.type=="gadget":
+                    macro.action.reset()
+                    macro.action.perform()
+        if holding_macro!=None:
+            holding_macro.action.receive_event(event)
+            while holding_macro.action.perform():
+                pass
 
 if __name__=='__main__':
     event_hooker.hook(trigger_event)
+    event_hooker.map_event(yaml.safe_load(open(f"{config_dir}/event_map.yaml").read()))
     kb.wait('m')
     

@@ -1,13 +1,13 @@
 #yaml part
 start_when :
-    event : "user_mouse_x_down"
+    event : "user_keyboard_x_down"
 macro_type : "combo"
-name : "Microwave Beam & Rocket Launcher"
+name : "Chaingun"
 enabled : true
 
 -----
 #python part
 Sequence(
-    Switch("Microwave Beam"),
+    Switch("Energy Shield"),
     Wait("End")
 )

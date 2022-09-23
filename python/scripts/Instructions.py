@@ -10,14 +10,20 @@ print(os.path.abspath(os.curdir))
 all_guns=yaml.safe_load(open("config/weapons/guns.yaml").read())
 print(all_guns)
 
+current_grenade="frag"#either frag or ice, but macro expect you equip frag at the start
+
 
 class Instruction:
+    def __init__(self):
+        self.parent=None
     def is_waiting_event(self):
         return False
     def perform(self):#return whether its parent can go into next instruction
         return False
     def is_last_instruction(self):#check from parent
         return self.parent.instructions.index(self)==len(self.parent.instructions)-1
+    def receive_event(self,event):
+        pass
 
 class Sequence(Instruction):
     
@@ -43,6 +49,9 @@ class Sequence(Instruction):
                 if ready_to_next:
                     if self.current_instruction().is_last_instruction():
                         self.instruction_index=0
+                        self.perform_block=False
+                        self.reset()
+                        return True
                     else:
                         self.instruction_index+=1
             self.perform_block=False
@@ -61,6 +70,9 @@ class Sequence(Instruction):
             if hasattr(self.current_instruction(), "perform"):
                 while True:
                     if self.current_instruction()==None:
+                        self.perform_block=False
+                        self.reset()
+                        return True
                         break
                     if isinstance(self.current_instruction(),Delay):
                         #print("Delay")
@@ -81,8 +93,11 @@ class Sequence(Instruction):
                         if ready_to_next:
                             if self.current_instruction().is_last_instruction():
                                 #self.instruction_index=0
-                                print("Meah")
+                                #print("Meah")
                                 self.instruction_index=-1
+                                self.perform_block=False
+                                self.reset()
+                                return True
                             else:
                                 self.instruction_index+=1
                         else:
@@ -99,22 +114,17 @@ class Sequence(Instruction):
                 print(f"{'  '*indent}{instruction.__class__}")
 
 
-class Wait(Instruction):
-    def __init__(self, *a):
+class Wait(Instruction):#๋Just wait for 
+    def __init__(self, event):
         super().__init__()
         self.parent=None
-        if len(a)==1:
-            self.event=a[0]
-        else:
-            self.event=None
-            self.events=[]
-            self.instructions=[]
-            for arg in a:
-                if isinstance(arg, str):
-                    self.events.append(arg.lower())
-                else:
-                    self.instructions.append(arg)
+        self.event=event
+            
     def receive_event(self,event):
+        if event==self.event:
+            return True
+        else:
+            return False
         if self.event!=None:
             if event==self.event:
                 #print("received event "+event)
@@ -126,7 +136,53 @@ class Wait(Instruction):
 
     def is_waiting_event():
         return True
-
+class Waits(Instruction):
+    def __init__(self,*a):
+        super().__init__()
+        self.parent=None
+        self.events=[]
+        self.already_triggered=False
+        self.instructions=[]
+        self._current_instruction=None
+        for arg in a:
+            if isinstance(arg, str):
+                self.events.append(arg.lower())
+            else:
+                self.instructions.append(arg)
+                arg.parent=self
+    def is_waiting_event(self):
+        return True
+    def perform(self):
+        if self.already_triggered:
+            return self._current_instruction.perform()
+        else:
+            return False
+    def reset(self):
+        self.already_triggered=False
+        self._current_instruction=None
+        for instruction in self.instructions:
+            if hasattr(instruction, "reset"):
+                instruction.reset()
+    def receive_event(self,event):
+        if self.already_triggered:
+            ready_to_next = self._current_instruction.perform() or self._current_instruction.receive_event(event)
+            if ready_to_next:
+                self.reset()
+                return True
+            else:
+                return False
+        else: 
+            for event_i,instruction in zip(self.events, self.instructions):
+                if event_i==event:
+                    self._current_instruction=instruction
+                    self.already_triggered=True
+                    ready_to_next = self._current_instruction.perform() or self._current_instruction.receive_event(event)
+                    if ready_to_next:
+                        self.reset()
+                        return True
+                    else:
+                        return False
+                    break
 class Delay(Instruction):
     def __init__(self, delay):
         super().__init__()
@@ -194,8 +250,8 @@ class Tap(Instruction):
         self.key=key
     def perform(self):
         kb.press(self.key)
-        kb.call_later(lambda k:kb.release(k), args=(self.key,),delay=1/60)
-        print("g pressed")
+        kb.call_later(lambda k:kb.release(k), args=(self.key,),delay=1/120)
+        #print("g pressed")
         return True
         
 
@@ -223,3 +279,30 @@ class Pass(Instruction):
     def __init__(self):
         super().__init__()
     pass
+class Print(Instruction):
+    def __init__(self, text):
+        super().__init__()
+        self.text=text
+    def perform(self):
+        print(self.text)
+        return True
+
+
+class SwitchGrenade(Instruction):
+    def __init__(self, grenade_name):
+        super().__init__()
+        self.grenade_name=grenade_name
+    def perform(self):
+        global current_grenade
+
+        if self.grenade_name==current_grenade:
+            kb.press("o")
+            kb.call_later(lambda k:kb.release(k), args=("o",),delay=1/120)
+            return True
+        else:
+            kb.press("g")
+            kb.call_later(lambda k:kb.release(k), args=("g",),delay=1/120)
+            current_grenade=self.grenade_name
+            kb.press("o")
+            kb.call_later(lambda k:kb.release(k), args=("o",),delay=1/120)
+            return True

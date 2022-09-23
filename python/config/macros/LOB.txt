@@ -3,28 +3,28 @@ start_when :
     event : "user_mouse_middle_down"
 macro_type : "combo"
 name : "Lock-on Burst"
-combo_cooldown : 0.1
+cooldown : 1
 
 -----
 #python part
 Sequence(
+    #Print("Switch to Lock-On Burst"),
     Switch("Lock-On Burst"),
-    Wait("user_mouse_left_release"),
-    Switch("Precision Bolt"),
-    Wait("user_mouse_right_down"),
-    Wait("user_mouse_left_release"),
+    Waits(
+        "user_mouse_right_down",Sequence(
+            Wait("user_mouse_right_release"),
+            #Print("Switch to Super Shotgun"),
+            Switch("Super Shotgun"),
+            Wait("user_mouse_left_release"),
+        ),
+        "user_mouse_left_down",Sequence(
+            Wait("user_mouse_left_release"),
+            #Print("Switch to Precision Bolt"),
+            Switch("Precision Bolt"),
+            #Print("Wait left_release),
+            Wait("user_mouse_right_down"),
+            Wait("user_mouse_left_release"),
+        )
+    ),
     BackToStart()
-    #Wait(
-    #    "right_down",
-    #        Wait("right_release",Sequence(
-    #            Delay(1/30),
-    #            Switch("Super Shotgun"),
-    #            Wait("left_release")
-    #        )),
-    #    "left_down",
-    #        Wait("left_release",Sequence(
-    #            Switch("Precision Bolt"),
-    #            Wait("left_release")
-    #        ))
-    #)
 )

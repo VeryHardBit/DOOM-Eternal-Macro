@@ -1,7 +1,7 @@
 #yaml part
 start_when :
-    event : "user_grenade_release"
-name : "Grenade w/Swap"
+    event : "user_keyboard_r_down"
+name : "Flame Belch Grenade"
 enabled : false
 spam_delay : 0.5
 macro_type: "gadget"
@@ -10,5 +10,7 @@ macro_type: "gadget"
 #python part
 Sequence(
     #Wait("user_keyboard_ctrl_release"),
-    Tap("g")
+    Tap("ctrl"),
+    Delay(1/30),
+    Tap("g"),
 )

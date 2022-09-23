@@ -7,9 +7,6 @@ def trigger_event(event):
     #mouse.click()
     #time.sleep(1/120)
     #mouse.release()
-    kb.press("j")
-    time.sleep(1/120)
-    kb.release("j")
 
 if __name__=='__main__':
     event_hooker.hook(trigger_event)

@@ -1,13 +1,13 @@
 #yaml part
 start_when :
-    event : "user_mouse_x_down"
+    event : "user_keyboard_caps_lock_down"
 macro_type : "combo"
-name : "Microwave Beam & Rocket Launcher"
+name : "CombatShotgun"
 enabled : true
 
 -----
 #python part
 Sequence(
-    Switch("Microwave Beam"),
+    Switch("CombatShotgun"),
     Wait("End")
 )

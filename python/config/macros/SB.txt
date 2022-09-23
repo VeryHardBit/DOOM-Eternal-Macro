@@ -1,0 +1,12 @@
+#yaml part
+start_when :
+    event : "user_mouse_x_down"
+name : "Combat Shotgun"
+spam_delay : 0.5
+macro_type: "combo"
+enabled : false
+-----
+#python part
+Sequence(
+    Switch("Combat Shotgun"),
+)
