@@ -9,5 +9,4 @@ enabled : true
 #python part
 Sequence(
     Switch("Microwave Beam"),
-    Wait("End")
 )

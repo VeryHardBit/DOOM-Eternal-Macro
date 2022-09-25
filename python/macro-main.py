@@ -48,11 +48,11 @@ def trigger_event(event):
     global holding_macro_cooldown
     if event=="user_mouse_m_down":
         sys.exit()
-    
     if _temp==False:
         print("This should appear")
+        print(event)
         _temp=True
-    if GetWindowText(GetForegroundWindow())=="DOOMEternal":
+    if GetWindowText(GetForegroundWindow())=="DOOMEternal" or True:
         #There is macro combo,single weapon,macro perform once
         if event=="user_keyboard_q_down" or event=="user_keyboard_q_release":
             holding_macro=None

@@ -87,16 +87,14 @@ class Sequence(Instruction):
                             time.sleep(1/120)
                     if isinstance(self.current_instruction(), BackToStart):
                         self.instruction_index=0
+                        self.reset()
                         continue
                     else:
                         ready_to_next=self.current_instruction().perform()
                         if ready_to_next:
                             if self.current_instruction().is_last_instruction():
-                                #self.instruction_index=0
-                                #print("Meah")
                                 self.instruction_index=-1
                                 self.perform_block=False
-                                self.reset()
                                 return True
                             else:
                                 self.instruction_index+=1
@@ -106,7 +104,6 @@ class Sequence(Instruction):
                 pass
             self.perform_block=False
     def print(self, indent=0):
-        #print("Sequence:")
         for instruction in self.instructions:
             try:
                 instruction.print(indent=indent+1)
@@ -127,11 +124,9 @@ class Wait(Instruction):#๋Just wait for
             return False
         if self.event!=None:
             if event==self.event:
-                #print("received event "+event)
                 return True
         elif self.events!=None:
             if event in self.events:
-                #print("received event "+event)
                 return True
 
     def is_waiting_event():
