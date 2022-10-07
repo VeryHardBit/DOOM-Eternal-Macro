@@ -1,5 +1,5 @@
 kill fodder later As they spawn constantly
-hold weapon wheel btn to take times and think what is gonna comes up
+weapon wheel can be fast-selected with mouse movement
 try using multiple gadgets:
     glory kills:
         dash can be refilled with glory kills
@@ -9,8 +9,9 @@ try using multiple gadgets:
         rotate around to hit more enemy(more armors)
 ืnever stop moving and try to stay in air:
     meat hook:
-        can make you fly high
-
+        get extra jump once connect
+        dash,shoot can disconnect
+        change weapon = extra momentum
     ballista:
         there are some knockback. can be used for shooting and retreating
 headshot deals extra damage

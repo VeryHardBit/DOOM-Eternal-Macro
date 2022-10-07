@@ -224,7 +224,7 @@ class Shoot(Instruction):
         super().__init__()
     def perform(self):
         kb.press("j")
-        kb.call_later(lambda k:kb.release(k), args=("j",),delay=0.1)
+        kb.call_later(lambda k:kb.release(k), args=("j",),delay=1/60)
         #print("Performing Shot")
         return True
 class Hold_Mod(Instruction):

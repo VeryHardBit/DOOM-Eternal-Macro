@@ -3,6 +3,6 @@ The macro that helps you with Quick-Switching,Gadget manipulation, etc., in DOOM
 
 You can start the macro with `python/macro-main.py`.
 
-The script will analyze the files in `python/config/` and perform action accordingly.
+The script will analyze the files in `python/config/`
 
-This will be ready for release soon.
+README.md will be updated

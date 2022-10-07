@@ -3,11 +3,10 @@ Access microwave beam with 3 & scroll-up
 
 
 
-
-
-Detect current weapon :
-    is_current_weapon(...) ; ... is mod name or weapon name
-
-
 Write README.md :
     required keybinding
+    what does macro do
+    required playstyle
+    how to customize combo(combo customization)
+
+    

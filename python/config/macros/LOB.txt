@@ -19,7 +19,8 @@ Sequence(
             Wait("user_mouse_left_release"),
             Switch("Precision Bolt"),
             Wait("user_mouse_right_down"),
-            Wait("user_mouse_left_release"),
+            Wait("user_mouse_left_down"),
+            Wait("user_mouse_right_release"),
         )
     ),
     BackToStart()

@@ -2,23 +2,31 @@
 
 
 DOOM Hunter :
+    2 blood punch can take his sled off
     aim at his sled with Ballista and PB.
     Plasma rifle can only take his shield off. You still need to shoot for his sled to comes off.
 
 Pinkies :
     ice bomb and shoot at tail
-    can be killed by blood punch
+    instant killed blood punch
     shoot at tail after it charges up
 
 CyberMancubus :
     Blood punch and then chaingun
     brute force with combos is possible but take times
 Marauder :
-    Run away and wait for his beam. Once you feel his beam. focus him
+    Run away from him, Counter him once green
+    RocketLauncher can't make his shield comes up and go for main combo
+    combo : Ballista > SSG
 
 Arachnotron :
     shoot weak point then legs (lil extra dmg to legs)
+Revenant :
+    shoot around it's head and weak points(hit head for dmg+,hit weak point for dmg+)
 
 Whiplash :
     Combo with RocketLauncher in it
     Ice bomb then finish off
+
+Tyrant,Baron of hell : 
+    use frag,ice, PB>Rocket Launcher until it's die

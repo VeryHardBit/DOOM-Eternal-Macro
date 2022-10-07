@@ -27,7 +27,7 @@ def kb_hook(event):
             evt=f"user_{evt}_down"
             kb_holding.append(k)
         else:
-            evt=f"user_{evt}_hold"
+            evt=f"user_{evt}_down"
     elif event.event_type=="up":
         evt=f"user_{evt}_release"
         if k in kb_holding:
